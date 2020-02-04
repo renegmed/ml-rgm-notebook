@@ -1,0 +1,13 @@
+Status: wip
+
+Source: 
+ 
+https://www.udemy.com/course/tensorflow-2-practical-advanced/learn/lecture/16316192#overview
+
+Status: not working
+
+It seems the sagemaker TensorFlow 2.0.0 could not handle GRU/LSTM layers training
+
+Need to research more
+
+A solution could be to create docker image for training

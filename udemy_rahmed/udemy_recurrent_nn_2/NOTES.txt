@@ -1,0 +1,6 @@
+Status: wip
+
+This is an attempt to solve the problem in udemy_recurrent_nn
+
+Use customized docker container to train with GRU/LSTM layers on TensorFlow 2.0.0
+

@@ -1,0 +1,3 @@
+Status: working
+Source: https://medium.com/ml-bytes/how-to-create-a-tensorflow-serving-container-for-aws-sagemaker-4853842c9751
+

@@ -1,0 +1,11 @@
+Status: working, uses TensorFlow 2.0.0
+
+
+
+Source: 
+
+https://github.com/awslabs/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/tensorflow_script_mode_training_and_serving/tensorflow_script_mode_training_and_serving.ipynb
+
+Article:
+
+https://sagemaker.readthedocs.io/en/stable/using_tf.html#train-a-model-with-tensorflow
