@@ -4,7 +4,9 @@ import os
 import numpy as np
 import json
 
-def prep_data():
+def data_prep():
+    print("++++++ Start data prep ++++++++")
+    
     data_url = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
     
     dataset_text = open(data_url, 'rb').read().decode(encoding='utf-8')
@@ -178,7 +180,7 @@ def loss(labels, logits):
 
 def _parse_args():
     parser = argparse.ArgumentParser()
-
+    
     # Data, model, and output directories
     # model_dir is always passed in from SageMaker. By default this is a S3 path under the default bucket.
     parser.add_argument('--model_dir', type=str)
@@ -197,5 +199,5 @@ if __name__ == "__main__":
     
     if args.current_host == args.hosts[0]:
         # save model to an S3 directory with version number '00000001'
-        model.save(os.path.join(args.sm_model_dir, '000000001'), 'rnn_model.h5')
+        model.save(os.path.join(args.sm_model_dir, '000000001'), 'text_gen_model.h5')
     

@@ -3,14 +3,13 @@ login:
 .PHONY: login
 
 build:
-	docker build -t text-generation-class:latest .
+	docker build -t text-generation:latest .
 .PHONY: build
 
 build2:
-	docker build -t text-generation-class-2units-2layers:latest .
+	docker build -t text-generation-2units-2layers:latest .
 .PHONY: build2
 
 copy_data:
 	cp -a ../data local_test/test_dir/input/data/training/
 .PHONY: copy_data
-

@@ -4,7 +4,7 @@ import os
 import numpy as np
 import json
 
-def data_prep():
+def prep_data():
     data_url = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
     
     dataset_text = open(data_url, 'rb').read().decode(encoding='utf-8')
@@ -136,20 +136,20 @@ def build_and_train_model(dataset, vocab, batch_size):
     
     # Use a tf.keras.callbacks.ModelCheckpoint to ensure that checkpoints are saved during training:
     
-    # Directory where the checkpoints will be saved
-    checkpoint_dir = './training_checkpoints'
+#     # Directory where the checkpoints will be saved
+#     checkpoint_dir = './training_checkpoints'
         
-    # Name of the checkpoint files
-    checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
+#     # Name of the checkpoint files
+#     checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
     
-    checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
-        filepath=checkpoint_prefix,
-        save_weights_only=True
-    )
+#     checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
+#         filepath=checkpoint_prefix,
+#         save_weights_only=True
+#     )
     
     # Execute training
     
-    EPOCHS=10
+    EPOCHS=2
     
     model.fit(dataset, epochs=EPOCHS) #, callbacks=[checkpoint_callback])
     
@@ -176,26 +176,26 @@ def loss(labels, logits):
     
 
 
-# def _parse_args():
-#     parser = argparse.ArgumentParser()
+def _parse_args():
+    parser = argparse.ArgumentParser()
 
-#     # Data, model, and output directories
-#     # model_dir is always passed in from SageMaker. By default this is a S3 path under the default bucket.
-#     parser.add_argument('--model_dir', type=str)
-#     parser.add_argument('--sm-model-dir', type=str, default=os.environ.get('SM_MODEL_DIR'))
-#     parser.add_argument('--train', type=str, default=os.environ.get('SM_CHANNEL_TRAINING'))
-#     parser.add_argument('--hosts', type=list, default=json.loads(os.environ.get('SM_HOSTS')))
-#     parser.add_argument('--current-host', type=str, default=os.environ.get('SM_CURRENT_HOST'))
+    # Data, model, and output directories
+    # model_dir is always passed in from SageMaker. By default this is a S3 path under the default bucket.
+    parser.add_argument('--model_dir', type=str)
+    parser.add_argument('--sm-model-dir', type=str, default=os.environ.get('SM_MODEL_DIR'))
+    parser.add_argument('--train', type=str, default=os.environ.get('SM_CHANNEL_TRAINING'))
+    parser.add_argument('--hosts', type=list, default=json.loads(os.environ.get('SM_HOSTS')))
+    parser.add_argument('--current-host', type=str, default=os.environ.get('SM_CURRENT_HOST'))
 
-#     return parser.parse_known_args()
+    return parser.parse_known_args()
 
 if __name__ == "__main__":
-    #args, unknown = _parse_args()
+    args, unknown = _parse_args()
         
     dataset, vocab, batch_size = prep_data()
     model = build_and_train_model(dataset, vocab, batch_size)
     
-    #if args.current_host == args.hosts[0]:
+    if args.current_host == args.hosts[0]:
         # save model to an S3 directory with version number '00000001'
-        #model.save(os.path.join(args.sm_model_dir, '000000001'), 'rnn_model.h5')
+        model.save(os.path.join(args.sm_model_dir, '000000001'), 'rnn_model.h5')
     

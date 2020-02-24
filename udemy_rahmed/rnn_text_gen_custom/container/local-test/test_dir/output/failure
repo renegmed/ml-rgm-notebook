@@ -1,0 +1,21 @@
+framework error: 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/sagemaker_containers/_trainer.py", line 65, in train
+    env = sagemaker_containers.training_env()
+  File "/usr/local/lib/python3.6/dist-packages/sagemaker_containers/__init__.py", line 27, in training_env
+    resource_config=_env.read_resource_config(),
+  File "/usr/local/lib/python3.6/dist-packages/sagemaker_containers/_env.py", line 240, in read_resource_config
+    return _read_json(resource_config_file_dir)
+  File "/usr/local/lib/python3.6/dist-packages/sagemaker_containers/_env.py", line 193, in _read_json
+    return json.load(f)
+  File "/usr/lib/python3.6/json/__init__.py", line 299, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+Expecting value: line 1 column 1 (char 0)
